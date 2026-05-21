@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Rizal Province Tourism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Styles/styles.css" />
+<style>
+  /* Page hero banner for inner pages */
+  .page-hero {
+    background: linear-gradient(135deg, rgba(11,30,20,.92) 0%, rgba(27,61,40,.85) 60%, rgba(45,90,61,.75) 100%),
+                url('https://picsum.photos/seed/rizal-about/1920/600') center/cover no-repeat;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 80px;
+  }
+  .page-hero .container { padding-bottom: 52px; }
+  .page-hero-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold-lite); margin-bottom: 10px;
+    display: block;
+  }
+  .page-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700; color: var(--white); line-height: 1.15;
+  }
+  .breadcrumb {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .78rem; color: rgba(255,255,255,.55);
+    margin-top: 14px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--gold-lite); }
+  .breadcrumb span { color: var(--gold-lite); }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-main">Rizal Province</span>
+      <span class="logo-sub">Tourism Office</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="nav-active">About</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="festivals.html">Festivals</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="inquiry.html" class="nav-cta">Plan Your Trip</a></li>
+    </ul>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-mobile" onclick="closeMobileNav()">✕</button>
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="destinations.html" onclick="closeMobileNav()">Destinations</a>
+  <a href="festivals.html" onclick="closeMobileNav()">Festivals</a>
+  <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
+  <a href="inquiry.html" onclick="closeMobileNav()">Plan Your Trip</a>
+</div>
+
+<!-- ─── PAGE HERO BANNER ─── -->
+<div class="page-hero">
+  <div class="container">
+    <span class="page-hero-label">About the Province</span>
+    <h1 class="page-hero-title">The Land of the<br>Great Hero</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>About</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <img class="about-image-main" src="images/Rizalc.jpg" alt="Rizal Province Nature">
+        <img class="about-image-accent" src="images/rizalMap.png" alt="Rizal Heritage">
+        <div class="about-badge">
+          <div class="badge-num">1901</div>
+          <div class="badge-label">Year Founded</div>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-label">About the Province</span>
+        <h2 class="section-title">The Land of the<br>Great Hero</h2>
+        <p style="color:var(--text-mid);line-height:1.75;margin-bottom:20px">
+          Named in honor of the Philippines' national hero, Dr. José Rizal, the Province of Rizal
+          sits at the eastern doorstep of Metro Manila, bordered by the majestic Sierra Madre mountain range.
+          This dynamic province blends urban accessibility with breathtaking natural scenery, making it a
+          top destination for adventure seekers, history enthusiasts, and culture lovers alike.
+        </p>
+        <p style="color:var(--text-mid);line-height:1.75">
+          Home to pristine waterfalls, rugged mountain trails, ancient petroglyphs, world-class art
+          museums, and vibrant festivals, Rizal Province offers an unrivaled diversity of experiences —
+          all just a short drive from the bustling capital.
+        </p>
+        <div class="about-facts">
+          <div class="fact-card">
+            <div class="fact-icon"></div>
+            <div class="fact-title">Location</div>
+            <div class="fact-val">CALABARZON Region, Luzon</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon"></div>
+            <div class="fact-title">Climate</div>
+            <div class="fact-val">Tropical, 25–34°C</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon"></div>
+            <div class="fact-title">Population</div>
+            <div class="fact-val">3.3 Million (2020)</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon"></div>
+            <div class="fact-title">Capital</div>
+            <div class="fact-val">Antipolo City</div>
+          </div>
+        </div>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="feat-icon">🌿</div>
+            <div>
+              <h4>Natural Wonders</h4>
+              <p>From the dramatic limestone karsts of Masungi to the crystal-clear Tinipak River and the thundering Daranak Falls, Rizal boasts unmatched natural diversity.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feat-icon">🏛️</div>
+            <div>
+              <h4>Rich Heritage</h4>
+              <p>The Angono Petroglyphs, Pinto Art Museum, and centuries-old churches reveal the deep cultural roots and artistic soul of the province.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feat-icon">🎭</div>
+            <div>
+              <h4>Vibrant Culture</h4>
+              <p>Renowned as the "Arts Capital of the Philippines," Angono is home to world-famous artists and hosts the spectacular Higantes Festival each November.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="foot-logo">Rizal Province</div>
+        <p>Discover the natural wonders, rich heritage, and vibrant culture of Rizal Province — the gateway to Sierra Madre, just beyond Metro Manila.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="festivals.html">Festivals</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="inquiry.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="destinations.html">Masungi Georeserve</a></li>
+          <li><a href="destinations.html">Tinipak River</a></li>
+          <li><a href="destinations.html">Daranak Falls</a></li>
+          <li><a href="destinations.html">Mt. Daraitan</a></li>
+          <li><a href="destinations.html">Pinto Art Museum</a></li>
+          <li><a href="destinations.html">Angono Petroglyphs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Municipalities</h4>
+        <ul>
+          <li><a href="destinations.html">Antipolo City</a></li>
+          <li><a href="destinations.html">Tanay</a></li>
+          <li><a href="destinations.html">Rodriguez</a></li>
+          <li><a href="destinations.html">Angono</a></li>
+          <li><a href="destinations.html">Binangonan</a></li>
+          <li><a href="destinations.html">Morong</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Province of Rizal Tourism Office. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="Javascript/main.js"></script>
+</body>
+</html>

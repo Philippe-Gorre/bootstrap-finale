@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinations — Rizal Province Tourism</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Styles/styles.css" />
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, rgba(11,30,20,.92) 0%, rgba(27,61,40,.85) 60%, rgba(45,90,61,.75) 100%),
+                url('https://picsum.photos/seed/rizal-dest/1920/600') center/cover no-repeat;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 80px;
+  }
+  .page-hero .container { padding-bottom: 52px; }
+  .page-hero-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold-lite); margin-bottom: 10px;
+    display: block;
+  }
+  .page-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700; color: var(--white); line-height: 1.15;
+  }
+  .breadcrumb {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .78rem; color: rgba(255,255,255,.55);
+    margin-top: 14px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
+  .breadcrumb a:hover { color: var(--gold-lite); }
+  .breadcrumb span { color: var(--gold-lite); }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-main">Rizal Province</span>
+      <span class="logo-sub">Tourism Office</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="destinations.html" class="nav-active">Destinations</a></li>
+      <li><a href="festivals.html">Festivals</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="inquiry.html" class="nav-cta">Plan Your Trip</a></li>
+    </ul>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-mobile" onclick="closeMobileNav()">✕</button>
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="destinations.html" onclick="closeMobileNav()">Destinations</a>
+  <a href="festivals.html" onclick="closeMobileNav()">Festivals</a>
+  <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
+  <a href="inquiry.html" onclick="closeMobileNav()">Plan Your Trip</a>
+</div>
+
+<!-- ─── PAGE HERO BANNER ─── -->
+<div class="page-hero">
+  <div class="container">
+    <span class="page-hero-label">Tourist Destinations</span>
+    <h1 class="page-hero-title">Discover Amazing<br>Places in Rizal</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Destinations</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── DESTINATIONS ─── -->
+<section id="destinations">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Tourist Destinations</span>
+      <h2 class="section-title">Discover Amazing Places</h2>
+      <p class="section-sub">From majestic waterfalls and mountain peaks to ancient heritage sites and thrilling adventures — Rizal Province has it all.</p>
+    </div>
+
+    <div class="dest-controls reveal">
+      <div class="search-row">
+        <div class="search-wrap">
+          <span class="search-icon"></span>
+          <input type="text" id="searchInput" placeholder="Search by name, municipality, or category…" oninput="handleSearch()">
+        </div>
+      </div>
+      <div class="filter-row" id="filterRow">
+        <button class="filter-btn active" data-cat="All" onclick="setFilter(this,'All')">All</button>
+        <button class="filter-btn" data-cat="Adventure" onclick="setFilter(this,'Adventure')"> Adventure</button>
+        <button class="filter-btn" data-cat="Waterfall" onclick="setFilter(this,'Waterfall')"> Waterfall</button>
+        <button class="filter-btn" data-cat="Mountain" onclick="setFilter(this,'Mountain')"> Mountain</button>
+        <button class="filter-btn" data-cat="Historical Site" onclick="setFilter(this,'Historical Site')"> Historical Site</button>
+        <button class="filter-btn" data-cat="Nature Park" onclick="setFilter(this,'Nature Park')"> Nature Park</button>
+        <button class="filter-btn" data-cat="Art & Museum" onclick="setFilter(this,'Art & Museum')"> Art & Museum</button>
+        <button class="filter-btn" data-cat="Dam & River" onclick="setFilter(this,'Dam & River')"> Dam & River</button>
+      </div>
+    </div>
+
+    <p class="results-count" id="resultsCount"></p>
+    <div class="dest-grid" id="destGrid"></div>
+  </div>
+</section>
+
+<!-- ─── DESTINATION MODAL ─── -->
+<div class="modal-overlay" id="destModal" onclick="handleModalOutsideClick(event)">
+  <div class="modal-box" id="modalBox">
+    <img class="modal-img" id="modalImg" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-cat" id="modalCat"></div>
+          <div class="modal-name" id="modalName"></div>
+          <div class="modal-location" id="modalLoc"><span></span></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-grid">
+        <div class="modal-info-card">
+          <div class="info-label">Opening Hours</div>
+          <div class="info-val" id="modalHours"></div>
+        </div>
+        <div class="modal-info-card">
+          <div class="info-label">Entrance Fee</div>
+          <div class="info-val" id="modalFee"></div>
+        </div>
+        <div class="modal-info-card">
+          <div class="info-label">Best Time to Visit</div>
+          <div class="info-val" id="modalBestTime"></div>
+        </div>
+        <div class="modal-info-card">
+          <div class="info-label">Municipality</div>
+          <div class="info-val" id="modalMuni"></div>
+        </div>
+      </div>
+      <div class="modal-section-title">Activities</div>
+      <div class="activities-list" id="modalActivities"></div>
+      <div class="modal-section-title">Travel Tips</div>
+      <div class="travel-tips">
+        <div class="tip-icon"></div>
+        <p id="modalTips"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="foot-logo">Rizal Province</div>
+        <p>Discover the natural wonders, rich heritage, and vibrant culture of Rizal Province — the gateway to Sierra Madre, just beyond Metro Manila.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="festivals.html">Festivals</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="inquiry.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="destinations.html">Masungi Georeserve</a></li>
+          <li><a href="destinations.html">Tinipak River</a></li>
+          <li><a href="destinations.html">Daranak Falls</a></li>
+          <li><a href="destinations.html">Mt. Daraitan</a></li>
+          <li><a href="destinations.html">Pinto Art Museum</a></li>
+          <li><a href="destinations.html">Angono Petroglyphs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Municipalities</h4>
+        <ul>
+          <li><a href="destinations.html">Antipolo City</a></li>
+          <li><a href="destinations.html">Tanay</a></li>
+          <li><a href="destinations.html">Rodriguez</a></li>
+          <li><a href="destinations.html">Angono</a></li>
+          <li><a href="destinations.html">Binangonan</a></li>
+          <li><a href="destinations.html">Morong</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Province of Rizal Tourism Office. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="Javascript/main.js"></script>
+</body>
+</html>
